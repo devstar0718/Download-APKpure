@@ -5,6 +5,7 @@ echo $json_data;
 
 function readDataFromPython()
 {
+    file_put_contents("urls.txt", "");
     $pwd = getcwd();
     // $cmd = "python " . $pwd . "/apkpure.py";
     // $cmd = "python " . $pwd . "/urls.py";
@@ -19,15 +20,11 @@ function readDataFromPython()
     // foreach($urls as $url){
         // print("<a href='$url ' target='_blank'>$url</a><br>");
     // }
-    // $command = 'start /b python.exe apkpure.py';
-    // pclose(popen($command, 'r'));
-    // sleep(20);
-    $urls = json_decode(file_get_contents('urls.txt'));
-    if(count($urls) < 200)
-        return "<h1>Processing not finished yet.<br> Please wait and try again later.</h1>";
-    $i = 0;
-    foreach($urls as $url){
-        $i += 1;
-        print("<h3><a href='$url ' target='_blank'>$i. \t$url</a><br></h3>");
-    }
+    $command = 'start /b python.exe apkpure.py';
+    pclose(popen($command, 'r'));
+    return "
+    Do not run this url again.<br>
+    <h1>The Scrapping App is running now.<br> It will take some time...<br> 
+    Please open <a href='http://18.233.34.185/apk.php' target='_blank'>http://18.233.34.185/apk.php</a> after few mins.</h1><br>
+    ";
 }
